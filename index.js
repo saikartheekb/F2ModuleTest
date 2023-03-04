@@ -1,21 +1,12 @@
 var exampleModal = document.getElementById('exampleModal')
 exampleModal.addEventListener('show.bs.modal', function (event) {
-  // Button that triggered the modal
   var button = event.relatedTarget
-  // Extract info from data-bs-* attributes
   var recipient = button.getAttribute('data-bs-whatever')
-  // If necessary, you could initiate an AJAX request here
-  // and then do the updating in a callback.
-  //
-  // Update the modal's content.
   var modalTitle = exampleModal.querySelector('.modal-title')
   var modalBodyInput = exampleModal.querySelector('.modal-body input')
-
   modalTitle.textContent = 'Create A Post '
   modalBodyInput.value = recipient
 })
-
-
 
 const publishButton = document.querySelector('#publish-button');
 const headingInput = document.querySelector('#heading-input');
@@ -30,14 +21,18 @@ publishButton.addEventListener('click', () => {
   // Create post element
   const postElement = document.createElement('div');
   postElement.classList.add('post');
+
   // set id of the post based on the timestamp
   postElement.id = timestamp;
+
   postElement.innerHTML = `
     <h2>${heading}</h2>
     <p>${content}</p>
-    <p>Published: ${timestamp}</p>
-    <button>Edit</button>
-    <button>Delete</button>
+    <div class="post-footer">
+    <button>Edit Post</button>
+    <button>Delete Post</button>
+    <p class="timestamp">Published: ${timestamp}</p>
+    </div>
   `;
   // Append post element to page
   document.body.appendChild(postElement);
@@ -63,16 +58,17 @@ publishButton.addEventListener('click', () => {
     publishButton.addEventListener('click', () => {
       postElement.querySelector('h2').textContent = headingInput.value;
       postElement.querySelector('p:first-of-type').textContent = contentInput.value;
-      postElement.querySelector('p:last-of-type').textContent = `Published: ${new Date().toLocaleString()}`;
+      console.log('post is edited')
+      postElement.querySelector('p:last-of-type').textContent = `Edited: ${new Date().toLocaleString()}`;
       headingInput.value = '';
       contentInput.value = '';
       const modal = bootstrap.Modal.getInstance(document.querySelector('#exampleModal'));
       modal.hide();
+
+      // delete the previous post
+      postElement.remove();
     });
   });
-
-  
-  
 
   // delete button should remove the post from the page
   deleteButton.addEventListener('click', () => {

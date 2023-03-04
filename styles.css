@@ -3,7 +3,6 @@
     color: white;
 }
 
-
 .heading {
     display: flex;
     flex-direction: row;
@@ -40,14 +39,14 @@ div.modal-dialog {
     height: 600px;
 }
 
-textarea#message-text.form-control {
+textarea#content-input.form-control {
     height: 250px;
 }
 
-input#recipient-name.form-control {
+input#heading-input.form-control {
     display: block;
     width: 100%;
-    height: calc(2em + .75rem + 10px);
+    height: 40px; /*calc(2em + .75rem + 10px); */
     padding: 10px;
     font-size: 1rem;
     font-weight: 400;
@@ -56,8 +55,6 @@ input#recipient-name.form-control {
     background-color: #f3f3f3fc;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 div.modal-body {
@@ -113,10 +110,6 @@ h3 {
     border-bottom: 0px !important;
     background-color: #f3f3f3fc;
     padding: 5px;
-    border-top-left-radius: .3rem;
-    border-top-right-radius: .3rem;
-
-    /* margin-top: 10px; */
 }
 
 .mb-3 {
@@ -138,14 +131,32 @@ div.modal-content {
     border: 2px solid white;
     padding: 10px;
     margin: 10px;
-    border-radius: 10px;
 }
 
 .post button{
     background-color: black;
     color: white;
     border: 1px solid white;
-    padding: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
     margin: 5px;
-    border-radius: 5px;
+}
+
+.post-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.timestamp {
+    color: #6c757d;
 }
